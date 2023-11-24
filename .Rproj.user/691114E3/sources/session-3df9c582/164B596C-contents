@@ -1,0 +1,15 @@
+#Exercice
+#ecrire une fonction qui calcule la somme de tous les nombres positifs
+#superieurs a 7 pour un vecteur donne
+
+sompo <- function(x){
+
+  p <- sum(x[x>7])
+return(p)
+}
+
+#package:
+#presentation: 4
+#devoir: 10
+#speech: 4
+#

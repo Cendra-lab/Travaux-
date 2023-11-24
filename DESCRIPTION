@@ -1,0 +1,10 @@
+Package: numericdev
+Type: Package
+Title: numeric derivation
+Version: 0.1.0
+Author: Cendra Nouvelle TOUSSE[aut, cre]
+Maintainer: Cendra Nouvelle TOUSSE <nouvelletousse@gmail.com>
+Description: tools that provide the documentation and means necessary to perform numerical derivations and error calculation
+License: LGPL-3
+Encoding: UTF-8
+LazyData: true

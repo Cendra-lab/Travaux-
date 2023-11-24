@@ -1,0 +1,31 @@
+library(datasets)
+plot(discoveries)
+plot(discoveries,col="blue",main="graphe",
+     xlab="abcisse",ylab="ordonnee")
+discoveries
+detach("package:datasets",unload = TRUE)
+dev.off()
+rm(list = ls())
+rm()
+library(ggplot2)
+ggplot2::mpg
+ggplot(mpg,aes(displ,hwy))+geom_point()+geom_smooth(span=1)
+ggplot(mpg,aes(displ,hwy))+geom_point()+geom_smooth(span=.3)
+library(MASS)
+ggplot(mpg,aes(displ,hwy))+geom_point()+geom_smooth(method = "gam",formula = y~s(x))
+ggplot(mpg,aes(displ,hwy))+geom_polygon(stat = "identity")
+ggplot(mpg, aes(hwy))+geom_area(stat = "bin")
+ggplot(mpg,aes(displ,hwy))+geom_point()+geom_smooth(method = "lm")
+ggplot(mpg,aes(displ,hwy))+geom_point()+geom_smooth(method = "rlm")
+ggplot(mpg,aes(displ))+geom_histogram()
+
+ggplot(mpg,aes(displ,fill=drv))+geom_freqpoly(binwidth=0.5)
+
+ggplot(mpg,aes(displ,fill=drv))+geom_histogram(binwidth = 0.5)+
+  facet_wrap(~drv,ncol = 1)
+ggplot(mpg,aes(displ,fill=drv))+geom_histogram(binwidth = 2)+
+  facet_wrap(~drv,ncol = 1)
+
+
+
+

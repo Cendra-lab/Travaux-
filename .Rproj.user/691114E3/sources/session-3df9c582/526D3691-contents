@@ -1,0 +1,30 @@
+library(tidyverse)
+library(ggplot2)
+ggplot2::mpg
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_point()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_boxplot()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_violin()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_jitter()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_area()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_bin_2d()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_bin2d()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_col()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_count()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_density_2d()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_density_2d_filled()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_path()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_polygon()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_raster()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_rug()
+ggplot(mpg,aes(hwy,cty))+geom_smooth()
+ggplot(mpg,aes(hwy,cty))+geom_step()
+ggplot(mpg,aes(hwy,cty,color=displ))+geom_tile()
+
+library(tidyverse)
+ls("package:tidyverse")
+tidyverse_packages(include_self = F)
+x <- c(4, 7, 3, 5, 0)
+x[2]
+
+
+

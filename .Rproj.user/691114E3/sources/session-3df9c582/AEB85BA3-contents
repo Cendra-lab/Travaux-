@@ -1,0 +1,278 @@
+library(tidyverse)
+library(ggplot2)
+ggplot2::economics
+ggplot(economics,aes(unemploy/pop,unemploy))+geom_path()+geom_point()
+year <- function(x)as.POSIXlt(x)$year+1900
+unempmed <- economics$uempmed
+
+ggplot(economics,aes(unemploy/pop,unempmed))+geom_path(color="grey50")+geom_point(aes(color=year(date)))
+
+ggplot(mpg,aes(cty,hwy))+geom_point(alpha=1/3)
+
+ggplot(mpg,aes(cty,hwy))+geom_point(alpha=1/3)+xlab("ctydriving(mpg)")+ylab("highwaydriving(mpg)")
+
+#removing the axis labels with NULL
+ggplot(mpg,aes(cty,hwy))+geom_point(alpha=1/3)+xlab(NULL)+ylab(NULL)
+
+ggplot(mpg,aes(cty,hwy))+geom_point()+xlab(NULL)+ylab(NULL)
+
+ggplot(mpg,aes(cty,hwy))+geom_point(alpha=1)+xlab(NULL)+ylab(NULL)
+
+ggplot(mpg,aes(cty,hwy))+geom_point(alpha=1/5)+xlab(NULL)+ylab(NULL)
+
+ggplot(mpg,aes(drv,hwy))+geom_jitter(width = 0.25) + xlim("f","r")+ylim(20,30)
+
+ggplot(mpg,aes(drv,hwy))+geom_jitter(width = 0.25,na.rm = TRUE)+ylim(NA,30)
+
+ggplot2::mpg
+
+p <- ggplot(mpg,aes(displ,hwy,color=factor(cyl)))+geom_point()
+p
+
+#introduction sur les filtres:permettent d'introduire des variables et representer
+#une partie specifique des datasets
+
+ggsave("plot.png",width = 5,height = 5) #permet d'enregistrer l'image
+summary(p) #affiche toutes les proprietes du graphique
+
+saveRDS(p,"plot.rds") #enregistre une copie du graphe en cache
+q <- readRDS("plot.rds")
+
+df <- data.frame(x=c(3,1,5),y=c(2,4,6),label=c("a","b","c"))
+df
+p <- ggplot(df,aes(x,y,label=label))+labs(x=NULL,y=NULL)+
+theme(plot.title = element_text(size = 12))
+
+#les differents types de geometries
+
+p+geom_point()+ggtitle("point")
+p+geom_text()+ggtitle("text")
+p+geom_bar(stat="identity")+ggplot("bar")
+p+geom_tile()+ggtitle("rester")
+p+geom_line()+ggtitle("line")
+p+geom_area()+ggtitle("area")
+p+geom_polygon()+ggtitle("polygon")
+p+geom_path()+ggtitle("path")
+
+ggplot(mpg,aes(displ,hwy,color=class))+geom_point()
+
+ggplot(mpg,aes(displ,hwy,color=class))+geom_point(show.legend = FALSE)+
+  directlabels::geom_dl(aes(label=class),method="smart.grid")
+
+library(tidyverse)
+library(ggridges)
+library(patchwork)
+library(hrbrthemes)
+library(gapminder)
+library(viridis)
+theme_set (theme_bw())
+library(gapminder)
+
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+#l'outil de filtrage de gapminder est %>%
+filter(continent%in% c("Africa","Europe"))%>%
+  filter(gdpPercap<30000)%>%
+ ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=year))+
+   geom_point()+
+   facet_wrap(~continent)+
+   labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+
+  #l'outil de filtrage de gapminder est %>%
+  filter(country%in% c("Cameroon","Vietnam"))%>%
+  filter(gdpPercap<30000)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=year))+
+  geom_point()+
+  facet_wrap(~country)+
+  labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+
+  #l'outil de filtrage de gapminder est %>%
+  filter(continent%in% c("Africa","Asia"))%>%
+  filter(gdpPercap<30000)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=country))+
+  geom_point()+
+  facet_wrap(~continent)+
+  labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+
+  #l'outil de filtrage de gapminder est %>%
+  filter(country%in% c("Cameroon","Nigeria"))%>%
+  filter(pop>5000000)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=year))+
+  geom_point()+
+  facet_wrap(~country)+
+  labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+gapminder::gapminder_unfiltered
+ggplot(gapminder_unfiltered,aes(pop,year,color=country))+geom_point() #pour
+#representer un scatter point
+
+
+
+
+dplyr::starwars
+p1 <- starwars%>%
+  ggplot(aes(x=height))+geom_histogram(binwidth = 20,show.legend=F,alpha=.5)+
+  labs(title = "Histogram",x="Height",y="count")
+print(p1)
+
+p2 <- starwars%>%
+  ggplot(aes(x=height))+geom_density(fill="blue",show.legend = F,alpha=.5)
+  labs(title="density plot",x="Height",y="Probability")
+print(p2)
+
+p3 <- starwars%>%
+  ggplot(aes(x=height))+geom_boxplot(show.legend = F,alpha=.5)+
+  labs(title="boxplot",x="height")
+print(p3)
+
+
+p3a <- starwars%>%
+  ggplot(aes(x=height,y=1))+geom_violin(fill="blue",show.legend = F,alpha=.5)+
+  labs(title = "violin plot",x="height")
+p3a
+
+
+#affichage des 04 graphiques p1,p2,p3 et p3a sur un meme graphe
+(p1/p2|p3/p3a)+plot_annotation(title = "single numeric variable",
+  theme = theme(plot.title = element_text(size = 18,color="blue")))+
+  theme(text = element_text('mono'))
+
+
+
+p6 <- starwars%>%
+  filter(mass<250)%>%
+  ggplot(aes(x=height,y=mass))+
+  geom_point(size=2.5,alpha=.7)+
+  geom_smooth()+
+  labs(title = "scatter plot",subtitle = "with smoothed linear model",x="height",y="Mass")
+p6
+
+
+p7 <- starwars%>%
+  filter(mass<250)%>%
+  drop_na(gender)%>%
+  ggplot(aes(height,mass,color=gender))+geom_point(size=2,show.legend = T)+
+  labs(title = "scatter plot",subtitle = "disagregated by color",x="height",y="mass")
+p7
+
+
+p7a <- starwars%>%
+  filter(mass<250)%>%
+  drop_na(gender)%>%
+  ggplot(aes(height,mass,color=gender))+
+  geom_point(size=2,show.legend = F)+
+  facet_wrap(~gender)+
+  labs(title="scatter plot",subtitle = "disagregated by color and facets",
+x="height",y="Mass")
+p7a
+
+#affichage des 03 graphes p6,p7,p7a sur un meme graphe
+#remarque: la police du graphe change
+(p6/p7|p7a)+plot_annotation(title = "single numeric variable",
+                               theme = theme(plot.title = element_text(size = 18,color="blue")))+
+  theme(text = element_text('mono'))
+
+#autre facon
+(p6/p7|p7a)+plot_annotation(title = "single numeric variable",
+           theme = theme(plot.title = element_text(size = 18,color="blue")))+
+  theme(text = element_text('mono'))
+
+(p6/p7|p7a) +plot_annotation(title = "Two numeric and one categorical variable",
+           theme = theme(plot.title = element_text(size=18,color = "blue")))+
+ theme(text= element_text('mono'))
+
+library(chickwts)
+datasets::chickwts
+view(chickwts)
+library(gapminder)
+ls("package:gapminder")
+
+
+library(ggplot2)
+chickwts%>%
+  group_by(feed)%>%
+  mutate(mean_by_feed=mean(weight))%>%
+  ungroup()%>%
+  mutate(feed=fct_reorder(feed,mean_by_feed))%>%
+  ggplot(aes(feed,weight,color=feed,show.legend=F))+
+  coord_flip()+
+  geom_jitter(show.legend = F,size=4,alpha=.2,width=.05)+
+  stat_summary(fun = mean,geom = "point",size=8,show.legend = F)+
+  geom_hline(aes(yintercept=mean(weight)),color="grey70",size=.9)+
+  geom_segment(aes(x=feed,xend=feed,y=mean(weight),yend=mean_by_feed),
+               size=2,show.legend = F)+
+  labs(title = "weight of chickens by feed group", x="Feed",y="Weight of chickens")+
+  theme(legend.position = "none")+theme_bw()
+
+
+#representation du volcano plot
+library(ggridges)
+library(viridis)
+library(gapminder)
+ggridges::lincoln_weather
+ggplot(lincoln_weather,aes(x=`Mean Temperature [F]`,y=`Month`,fill=..x..))+
+  geom_density_ridges_gradient(scale=3,rel_min_height=.01,alpha=5)+
+  scale_fill_viridis(name="Temp.[F]",option = "C")+
+  labs(title = 'Temperatures in lincoln NE in 2016')+
+  theme_bw()+
+  theme(legend.position = "none",
+        panel.spacing = unit(01,"lines"),
+        strip.text.x = element_text(size = 8))
+
+
+
+library(nlme)
+nlme::Oxboys
+ggplot(Oxboys,aes(age,height,group=Subject))+
+  geom_point()+
+  geom_line()
+
+ggplot(faithfuld,aes(eruptions,waiting))+
+  geom_contour(aes(z=density,color=..level..))
+
+#apprendre a tracer les cartes des pays avec ggplot en utilisant son outil
+#map_data()
+
+#%>% est un pipe ou un outil de filtrage de datasets
+ggplot2::diamonds
+ggplot(diamonds,aes(depth,fill=cut,color=cut))+
+  geom_density(alpha=.2,na.rm = TRUE)+
+  xlim(58,68)+
+  theme(legend.position = "none")+
+  labs(title = "density of depth",x="depth",y="density")
+
+#tracege d'un line chart
+ggplot(diamonds,aes(x=carat,y=price))+
+  geom_line(size=2,show.legend = T)
+ggplot(diamonds,aes(x=depth ,y=price,color=cut))+
+ geom_line() #representation d'un line chart avec class cut
+
+
+ggplot(lincoln_weather,aes(x=`Mean Temperature [F]`,y=`Month`,fill=..x..))+
+  geom_density_ridges_gradient(shelcale=3,rel_min_height=.01,alpha=5)+
+  scale_fill_viridis(name="Temp.[F]",option = "C")+
+  labs(title = 'Temperatures in lincoln NE in 2016')+
+  theme_bw()+
+  theme(legend.position = "none",
+        panel.spacing = unit(01,"lines"),
+        strip.text.x = element_text(size = 8))
+
+help(mpg)
+??mpg
+data(help="mpg")
+?mpg
+help(package="ggplot2")
+
+

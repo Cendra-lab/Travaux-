@@ -1,0 +1,86 @@
+#outils de controle de version
+#creation de package
+#creation du git en SSH
+
+library(tidyverse)
+library(ggridges)
+library(patchwork)
+library(hrbrthemes)
+library(gapminder)
+library(viridis)
+theme_set (theme_bw())
+library(gapminder)
+
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+  #l'outil de filtrage de gapminder est %>%
+  filter(continent%in% c("Africa","Europe"))%>%
+  filter(gdpPercap<30000)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=year))+
+  geom_point()+
+  facet_wrap(~continent)+
+  labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+  
+  #l'outil de filtrage de gapminder est %>%
+  filter(continent%in% c("Africa","Asia"))%>%
+  filter(gdpPercap<30000)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=year))+
+  geom_point()+
+  facet_wrap(~continent)+
+  labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+  
+  #l'outil de filtrage de gapminder est %>%
+  filter(continent%in% c("Africa","Americas"))%>%
+  filter(gdpPercap<30000)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=year))+
+  geom_point()+
+  facet_wrap(~continent)+
+  labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+  
+  #l'outil de filtrage de gapminder est %>%
+  filter(Africa%in% c("","Asia"))%>%
+  filter(gdpPercap<30000)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=year))+
+  geom_point()+
+  facet_wrap(~continent)+
+  labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+gapminder::gapminder
+head(gapminder,1200)
+print(gapminder,n=1200) #affiche les 1200 premieres lignes
+view(gapminder)
+
+print(gapminder[c("continent","lifeExp","gdpPercap")])
+
+gapminder[c(2,4,6)]
+gapminder%>%
+  select(continent,lifeExp,gdpPercap)%>%
+  head(gapminder,n=1200)
+#l'outil de filtrage de gapminder est %>%
+
+
+gapminder::gapminder_unfiltered
+gapminder%>%
+  
+  #l'outil de filtrage de gapminder est %>%
+  filter(country%in% c("Cameroon","Central African Republic"))%>%
+  filter(pop>500000)%>%
+  ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=year))+
+  geom_point()+
+  facet_wrap(~country)+
+  labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+
+
+data(package="ggplot2") #pour voir tous les datasets de ggplot2
+ls("package:gapminder") #pour voir tous les elements de gapminder

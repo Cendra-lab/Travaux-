@@ -1,0 +1,512 @@
+select(year,class,manufacturer)%>%
+head()
+library(ggplot2)
+search()
+ggplot2_datasets <- data(package="ggplot2")$results[,item]
+ggplot2_datasets <- data(package="ggplot2")$results[,"Item"]
+ggplot2_datasets
+ggplot(mpg,aes(displ,hwy))+geom_point()+facet_wrap(~class)
+ggplot(mpg,aes(displ,hwy))+geom_path()+facet_wrap(~class)
+ggplot(mpg,aes(displ,hwy))+geom_smooth()+facet_wrap(~class)
+ggplot(mpg,aes(displ,hwy))+geom_line()+facet_wrap(~class)
+ggplot(mpg,aes(displ,hwy))+geom_bar()+facet_wrap(~class)
+ggplot(mpg,aes(displ,hwy))+geom_violin()+facet_wrap(~class)
+ggplot(mpg,aes(displ,hwy))+geom_violin(color="blue")+facet_wrap(~class)
+ggplot(mpg,aes(displ,hwy))+geom_violin(fill="blue")+facet_wrap(~class)
+ggplot(mpg,aes(displ,hwy))+geom_freqpoly(binwidth=0.5)
+ggplot(mpg,aes(displ)+geom_freqpoly(binwidth=0.5)
+ggplot(mpg,aes(displ))+geom_freqpoly(binwidth=0.5)
+ggplot(mpg,aes(displ))+geom_freqpoly(binwidth=0.5)
+ggplot(mpg,aes(displ,hwy))+geom_polygon(binwidth=0.5)
+ggplot(mpg,aes(displ,hwy))+geom_polygon()
+ggplot(mpg,aes(displ))+geom_freqpoly(binwidth=0.5)+facet_wrap(class)
+ggplot(mpg,aes(displ,hwy))+geom_violin(fill="blue")
+ggplot(mpg,aes(displ))+geom_freqpoly(binwidth=1)
+ggplot(mpg,aes(displ))+geom_freqpoly(binwidth=2)
+ggplot(mpg,aes(displ))+geom_freqpoly(binwidth=1.5)
+ggplot(mpg,aes(displ))+geom_freqpoly(binwidth=0.2)
+ggplot(mpg,aes(displ,fill=drv))+geom_histogram(binwidth=1.5) +
+facet_wrap(~drv)
+ggplot(mpg,aes(displ,fill=drv))+geom_histogram(binwidth=1.5) +
+facet_wrap(~drv,ncol=1)
+ggplot(mpg,aes(displ,color=drv))+geom_histogram(binwidth=1.5) +
+facet_wrap(~drv,ncol=1)
+ggplot(mpg,aes(displ,fill=drv))+geom_histogram(binwidth=1.5) +
+facet_wrap(~drv,ncol=1)
+ggsave()
+print(gapminder[c(2,5,6)])
+gapminder[c(2,5,6)]
+gapminder%>%
+select(continent,pop,gdpPercap)%>%
+head(1000)
+gapminder::gapminder_unfiltered
+gapminder%>%
+#l'outil de filtrage de gapminder est %>%
+filter(continent%in% c("Africa","Asia"))%>%
+filter(gdpPercap<30000)%>%
+ggplot(aes(x=gdpPercap,y=lifeExp,size=pop,color=country))+
+geom_point()+
+facet_wrap(~continent)+
+labs(title = "life expectancy explained by GDP per capital",x="GDP per capital",y="life expectancy")
+#tracege d'un line chart
+ggplot(diamonds,aes(x=carat,y=price))+
+geom_line(size=2,show.legend = T)
+library(nlme)
+nlme::Oxboys
+ggplot(Oxboys,aes(age,height,group=Subject))+
+geom_point()+
+geom_line()
+library(ggplot2)
+chickwts%>%
+group_by(feed)%>%
+mutate(mean_by_feed=mean(weight))%>%
+ungroup()%>%
+mutate(feed=fct_reorder(feed,mean_by_feed))%>%
+ggplot(aes(feed,weight,color=feed,show.legend=F))+
+coord_flip()+
+geom_jitter(show.legend = F,size=4,alpha=.2,width=.05)+
+stat_summary(fun = mean,geom = "point",size=8,show.legend = F)+
+geom_hline(aes(yintercept=mean(weight)),color="grey70",size=.9)+
+geom_segment(aes(x=feed,xend=feed,y=mean(weight),yend=mean_by_feed),
+size=2,show.legend = F)+
+labs(title = "weight of chickens by feed group", x="Feed",y="Weight of chickens")+
+theme(legend.position = "none")+theme_bw()
+x[2]
+x <- c(4, 7, 3, 5, 0)
+x[2]
+x <- c(2, 4, 5, 1, 7, 6)
+which.min(x)
+which(x < 7 & x > 2)
+which(x%%2!=0 & x%%1==0 || x%%x==0)
+which(x%%2!=0 & x%%1==0 )
+which(x%%2!=0 & x%%x==0 )
+which(x%%2!=0 & x%%x==0 )|| x%%1==0
+library(numbers)
+isPrime(x)
+x[Primes(x)]
+Primes(x)
+x[isPrime(x)]
+ggplot2::mpg
+mpg%>%
+filter(manufacturer%in%c("ford","chevrolet"))%>%
+ggplot(aes(x=year,y=hwy,color=class))+
+geom_point()+
+facet_wrap(~manufacturer)+
+labs(title="hwy en fonction de l'annee",x="year",y="hwy")
+txhousing%>%
+filter(city %in% c("Denton County","Amarillo"))%>%
+ggplot(aes(x=year,y=sales,color=volume))+
+geom_point()+
+facet_wrap(~city)+
+labs(title="vente en fonction de l'annee",x="year",y="sales")
+data(package="ggplot2")
+ggplot2::
+ggplot2::
+ggplot2::
+ggplot2::
+data(package="ggplot2")$results[,Item]
+library(ggplot2)
+data(package="ggplot2")$results[,Item]
+data(package="ggplot2")$results[,"Item"]
+ggplot(mpg,aes(displ,hwy))+geom_dotplot()
+ggplot(mpg,aes(displ))+geom_dotplot()
+ggplot(mpg,aes(displ,fill=hwy))+geom_dotplot()
+ggplot(mpg,aes(displ,fill="blue"))+geom_dotplot()
+ggplot(mpg,aes(displ))+geom_dotplot(fill="blue")
+ggplot(mpg,aes(displ,color=hwy))+geom_dotplot(fill="blue")
+ggplot(mpg,aes(displ))+geom_dotplot(fill="blue")
+data(package="mpg")
+ls("package:mpg")
+x <- seq(0,5,.01)
+y <- dlnorm(x, -1/2, 1)
+y2 <- dgamma(x, 2, 2)
+y3 <- dweibull(x, 2, 2/sqrt(pi))
+leg.txt <- c("LN(-1/2,1)","G(2,2)","W(2,2/sqrt(pi))")
+plot(x, y, xlab="x", ylab="f(x)", main="Comparaison des densit\’es",
+plot(x, y, xlab="x", ylab="f(x)", main="Comparaison des densites",
++ ylim=range(y, y2, y3), col="black", type="l")
+plot(x, y, xlab="x", ylab="f(x)", main="Comparaison des densites", ylim=range(y, y2, y3), col="black", type="l")
+lines(x,y2, lty=2)
+lines(x,y3, lty=3)
+x <- seq(0,5,.01)
+y <- dlnorm(x, -1/2, 1)
+y2 <- dgamma(x, 2, 2)
+y3 <- dweibull(x, 2, 2/sqrt(pi))
+plot(x, y, xlab="x", ylab="f(x)", main="Comparaison des densites", ylim=range(y, y2, y3), col="black", type="l")
+lines(x,y2, lty=2)
+lines(x,y3, lty=3)
+legend("topright",leg=leg.txt, col="black",lty=1:3)
+x <- runif(100)
+y <- -log(x)
+par(mar=c(4, 4, 2, 1), mfrow=c(1, 2))
+hist(y)
+plot(ecdf(y), do.points=FALSE)
+hist(y,col="blue")
+plot(ecdf(y), do.points=FALSE)
+ma_liste <- list(1:5,6:10,11:15)
+#a
+unlist(ma_liste)
+data.frame(ma_liste)
+A <- data.frame(ma_liste)
+B <- rbind(A)
+B
+A <- data.frame(ma_liste)
+ma_liste
+unlist(ma_liste)
+ma_liste
+ma_liste <- unlist(ma_liste)
+ma_liste
+B <- matrix(ma_liste,ncol=3,nrow = 5)
+B
+A <- data.frame(ma_liste)
+A
+A <- matrix(ma_liste,ncol = 5,nrow = 3)
+A
+Ap <- matrix(1:10,ncol = 5,nrow = 5)
+Ap <- matrix(1:10,ncol = 5,nrow = 2)
+Mc <- cbind(A,Ap)
+Ap
+a <- matrix(c(A,Ap),ncol = 5,nrow = 5)
+a
+A[A!=diag(A)] <- NULL
+A[A!=diag(A)] <- 0
+A
+dplyr::starwars
+p1 <- starwars%>%
+ggplot(aes(x=height))+geom_histogram(binwidth = 20,show.legend=F,alpha=.5)+
+labs(title = "Histogram",x="Height",y="count")
+print(p1)
+p2 <- starwars%>%
+ggplot(aes(x=height))+geom_density(fill="blue",show.legend = F,alpha=.5)
+labs(title="density plot",x="Height",y="Probability")
+print(p2)
+dplyr::starwars
+p1 <- starwars%>%
+ggplot(aes(x=height))+geom_histogram(binwidth = 20,show.legend=F,alpha=.5)+
+labs(title = "Histogram",x="Height",y="count")
+print(p1)
+p2 <- starwars%>%
+ggplot(aes(x=height))+geom_density(fill="blue",show.legend = F,alpha=.5)
+labs(title="density plot",x="Height",y="Probability")
+print(p2)
+p3 <- starwars%>%
+ggplot(aes(x=height))+geom_boxplot(show.legend = F,alpha=.5)+
+labs(title="boxplot",x="height")
+print(p3)
+p3a <- starwars%>%
+ggplot(aes(x=height,y=1))+geom_violin(fill="blue",show.legend = F,alpha=.5)+
+labs(title = "violin plot",x="height")
+p3a
+P3a/p3|p2/p1+plot_annotation(title = "courbes",theme = theme(plot.title= element_text(size=2,color="blue")))+
+theme(text = element_text('mono'))
+p3a <- starwars%>%
+ggplot(aes(x=height,y=1))+geom_violin(fill="blue",show.legend = F,alpha=.5)+
+labs(title = "violin plot",x="height")
+p3a
+P3a/p3|p2/p1+plot_annotation(title = "courbes",theme = theme(plot.title= element_text(size=2,color="blue")))+
+theme(text = element_text('mono'))
+p3a/p3|p2/p1+plot_annotation(title = "courbes",theme = theme(plot.title= element_text(size=2,color="blue")))+
+theme(text = element_text('mono'))
+p3/p3a|p1/p2 + plot_annotation(title = "graphes",
+theme= theme(plot.title = element_text(size=6,color = "blue")))+
+theme=element_text('mono')
+p3/p3a|p1/p2 + plot_annotation(title = "graphes",
+theme= theme(plot.title = element_text(size=6,color = "blue")))+
+theme(text = element_text('mono'))
+p3a/p3|p1/p2 +plot_annotation(title = "graphes",theme(plot.title = element_text(size=8,color = "blue")))+
+theme(text = element_text('mono'))
+#affichage des 04 graphiques p1,p2,p3 et p3a sur un meme graphe
+(p1/p2|p3/p3a)+plot_annotation(title = "single numeric variable",
+theme = theme(plot.title = element_text(size = 18,color="blue")))+
+theme(text = element_text('mono'))
+p3a/p3|p1/p2 +plot_annotation(title = "graphes",theme(plot.title = element_text(size=8,color = "blue")))+
+theme(text = element_text('mono'))
+p3a/p3|p1/p2 +plot_annotation(title = "graphes",
+theme(plot.title = element_text(size=8,color = "blue")))+
+theme(text = element_text('mono'))
+p3a/p3|p1/p2 +plot_annotation(title = "numeric variable",
+theme(plot.title = element_text(size=8,color = "blue")))+
+theme(text = element_text('mono'))
+(p3a/p3|p1/p2) +plot_annotation(title = "numeric variable",
+theme(plot.title = element_text(size=8,color = "blue")))+
+theme(text = element_text('mono'))
+(p3a/p3|p1/p2) +plot_annotation(title = "numeric variable",theme =
+theme(plot.title = element_text(size=8,color = "blue")))+
+theme(text = element_text('mono'))
+(p3a/p3|p1/p2) +plot_annotation(title = "numeric variable",theme =
+theme(plot.title = element_text(size=18,color = "blue")))+
+theme(text = element_text('mono'))
+help(mpg)
+??mpg
+help(mpg)
+??mpg
+data(help="mpg")
+?mpg
+help(package="ggplot2")
+ggplot(lincoln_weather,aes(x=`Mean Temperature [F]`,y=`Month`,fill=..x..))+
+geom_density_ridges_gradient(shelcale=3,rel_min_height=.01,alpha=5)+
+scale_fill_viridis(name="Temp.[F]",option = "C")+
+labs(title = 'Temperatures in lincoln NE in 2016')+
+theme_bw()+
+theme(legend.position = "none",
+panel.spacing = unit(01,"lines"),
+strip.text.x = element_text(size = 8))
+#tracege d'un line chart
+ggplot(diamonds,aes(x=carat,y=price))+
+geom_line(size=2,show.legend = T)
+ggplot(diamonds,aes(depth,fill=cut,color=cut))+
+geom_density(alpha=.2,na.rm = TRUE)+
+xlim(58,68)+
+theme(legend.position = "none")+
+labs(title = "density of depth",x="depth",y="density")
+library(nlme)
+nlme::Oxboys
+ggplot(Oxboys,aes(age,height,group=Subject))+
+geom_point()+
+geom_line()
+#representation du volcano plot
+library(ggridges)
+library(viridis)
+library(gapminder)
+ggridges::lincoln_weather
+ggplot(lincoln_weather,aes(x=`Mean Temperature [F]`,y=`Month`,fill=..x..))+
+geom_density_ridges_gradient(scale=3,rel_min_height=.01,alpha=5)+
+scale_fill_viridis(name="Temp.[F]",option = "C")+
+labs(title = 'Temperatures in lincoln NE in 2016')+
+theme_bw()+
+theme(legend.position = "none",
+panel.spacing = unit(01,"lines"),
+strip.text.x = element_text(size = 8))
+library(ggplot2)
+chickwts%>%
+group_by(feed)%>%
+mutate(mean_by_feed=mean(weight))%>%
+ungroup()%>%
+mutate(feed=fct_reorder(feed,mean_by_feed))%>%
+ggplot(aes(feed,weight,color=feed,show.legend=F))+
+coord_flip()+
+geom_jitter(show.legend = F,size=4,alpha=.2,width=.05)+
+stat_summary(fun = mean,geom = "point",size=8,show.legend = F)+
+geom_hline(aes(yintercept=mean(weight)),color="grey70",size=.9)+
+geom_segment(aes(x=feed,xend=feed,y=mean(weight),yend=mean_by_feed),
+size=2,show.legend = F)+
+labs(title = "weight of chickens by feed group", x="Feed",y="Weight of chickens")+
+theme(legend.position = "none")+theme_bw()
+p7a <- starwars%>%
+filter(mass<250)%>%
+drop_na(gender)%>%
+ggplot(aes(height,mass,color=gender))+
+geom_point(size=2,show.legend = F)+
+facet_wrap(~gender)+
+labs(title="scatter plot",subtitle = "disagregated by color and facets",
+x="height",y="Mass")
+p7a
+#%>% est un pipe ou un outil de filtrage de datasets
+ggplot2::diamonds
+ggplot(diamonds,aes(depth,fill=cut,color=cut))+
+geom_density(alpha=.2,na.rm = TRUE)+
+xlim(58,68)+
+theme(legend.position = "none")+
+labs(title = "density of depth",x="depth",y="density")
+#%>% est un pipe ou un outil de filtrage de datasets
+ggplot2::diamonds
+ggplot(diamonds,aes(depth,fill=cut,color=cut))+
+geom_density(alpha=.2,na.rm = TRUE)+
+labs(title = "density of depth",x="depth",y="density")
+#%>% est un pipe ou un outil de filtrage de datasets
+ggplot2::diamonds
+ggplot(diamonds,aes(depth,fill=cut,color=cut))+
+geom_density(alpha=.2,na.rm = TRUE)+
+xlim(58,68)+
+labs(title = "density of depth",x="depth",y="density")
+library(nlme)
+nlme::Oxboys
+ggplot(Oxboys,aes(age,height,group=Subject))+
+geom_point()+
+geom_line()
+library(iris)
+datasets::iris
+view(iris)
+iris%>%
+filter(Species%in% c(setosa,virginica))%>%
+ggplot(aes(Sepal.Length,Sepal.Width,color=Species))+
+geom_point()+
+facet_wrap(~species)+
+labs(title = "longueur des species en fonction de la largeur",x="Sepal.Length",
+y="Sepal.width")
+iris%>%
+filter(Species%in% c(setosa,virginica))%>%
+ggplot(aes(Sepal.Length,Sepal.Width,color=Species))+
+geom_point()+
+facet_wrap(~species)+
+labs(title = "longueur des species en fonction de la largeur",x="Sepal.Length",
+y="Sepal.width")
+iris%>%
+filter(Species%in% c("setosa","virginica"))%>%
+ggplot(aes(Sepal.Length,Sepal.Width,color=Species))+
+geom_point()+
+facet_wrap(~species)+
+labs(title = "longueur des species en fonction de la largeur",x="Sepal.Length",
+y="Sepal.width")
+iris%>%
+filter(Species%in% c("setosa","virginica"))%>%
+ggplot(aes(Sepal.Length,Sepal.Width,color=Species))+
+geom_point()+
+facet_wrap(~Petal.Length)+
+labs(title = "longueur des species en fonction de la largeur",x="Sepal.Length",
+y="Sepal.width")
+iris%>%
+filter(Species%in% c("setosa","virginica"))%>%
+ggplot(aes(Sepal.Length,Sepal.Width,color=Species))+
+geom_point()+
+facet_wrap(~Species)+
+labs(title = "longueur des species en fonction de la largeur",x="Sepal.Length",
+y="Sepal.width")
+library(datasets)
+data(package="datasets")
+datasets::AirPassengers
+datasets::eurodist
+library(nlme)
+data(package="nlme")
+nlme::Oxboys
+ggplot2::diamonds
+diamonds%>%
+filter(cut%in% c("Premium","Good "))%>%
+ggplot(price,depth, color=clarity)+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut%in% c("Premium","Good "))%>%
+ggplot(price ,depth, color=clarity)+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+ggplot2::diamonds
+diamonds%>%
+filter(cut%in% c("Premium","Good "))%>%
+ggplot(price ,depth, color=clarity)+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut%in% c("Premium","Good "))%>%
+ggplot(x=price ,y=depth, color=clarity)+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut%in% c("Premium","Good "))%>%
+ggplot(aes(x=price ,y=depth, color=clarity))+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut%in% c("Premium","Good "))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+library(ggplot2)
+ggplot2::diamonds
+diamonds%>%
+filter(cut%in% c("Premium","Good "))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut %in% c("Premium","Good"))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut %in% c("Premium","Good"))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_smooth()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut %in% c("Premium","Good"))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_smooth()+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut %in% c("Premium","Good","Ideal"))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_smooth()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut %in% c("Premium","Good"))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_smooth()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+diamonds%>%
+filter(cut %in% c("Premium","Good"))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+#%>% est un pipe ou un outil de filtrage de datasets
+ggplot2::diamonds
+ggplot(diamonds,aes(depth,fill=cut,group=cut))+
+geom_density(alpha=.2,na.rm = TRUE)+
+xlim(58,68)+
+theme(legend.position = "none")+
+labs(title = "density of depth",x="depth",y="density")
+ggplot(mpg,aes(displ,hwy,color=class))+geom_point(show.legend = FALSE)+
+directlabels::geom_dl(aes(label=class),method="smart.grid")
+%>%
+diamonds%>%
+filter(cut %in% c("Premium","Good"))%>%
+filter(price>mean(price))%>%
+ggplot(aes(x=price ,y=depth, color=cut))+
+geom_point()+
+facet_wrap(~cut)+
+labs(x="price",y="depth",title = "depth as function of price")
+library(numericdev)
+f <- function(x){x^2}
+g <- function(x){1/x}
+devplot(f,2)
+devplot(f,g,2)
+devplot(g,2)
+par(mfrow)
+par(mfrow=c(1,2))
+devplot(f,2)
+devplot(g,2)
+f1 <- devplot(f,2)
+f2 <- devplot(g,2)
+plot(f1,f2)
+library(numericdev)
+f <- functiom
+library(numericdev)
+f <- function(x){x^2+x-3}
+limit(f,-2)
+devplot(f,-2)
+sompo <- function(x){
+x[sum(x>7)]
+return(x)
+}
+x <- c(2,4,5,7,8,1,-2,4,-5,-8,9)
+sompo(x)
+sompo <- function(x){
+sum[x>7]
+return(x)
+}
+sompo(x)
+sompo <- function(x){
+sum(x[x>7])
+return(x)
+}
+x <- c(2,4,5,7,8,1,-2,4,-5,-8,9)
+sompo(x)
+sompo <- function(x){
+p <- sum(x[x>7])
+return(p)
+}
+sompo(x)

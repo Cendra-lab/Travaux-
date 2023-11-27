@@ -14,23 +14,17 @@ This function allows us to numerically derive functions in R. By having a functi
 
 f <- function(x){sin(x)}
 limit(f,0.2)
-[1] 0.9797718
+#[1] 0.9797718
 
 #calculation of rounding error
 
 f <- function(x){sin(x)}
 Ear(f,0.2)
-[1] 0.0003973387
+#[1] 0.0003973387
 
 #calculating truncation error
 
 f <- function(x){sin(x)}
 Etr(f,0.2)
-[1] 1.387779e-08
+#[1] 1.387779e-08
 
-#calculating total error
-
-f <- function(x){sin(x)}
-Eto(f,0.2)
-[1] 0.0008628867
-}

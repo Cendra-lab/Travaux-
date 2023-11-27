@@ -1,4 +1,3 @@
-
 #the different functions of the numericdev package
 #the package allows:
 #to derive functions numerically
@@ -15,21 +14,21 @@
 limit <- function(f,x0,h=10e-15) {
 
 
-limval <- function(x){
-  (f(x+h)-f(x))/h
+  limval <- function(x){
+    (f(x+h)-f(x))/h
+  }
+
+  lim <- limval(x0)
+  return(lim)
+
 }
-
-lim <- limval(x0)
-return(lim)
-
-   }
 
 #example :
 
 # Calculate the limit of f(x) when x tends to 0
 
 #f <- function(x) {
-  #return(1/x)
+#return(1/x)
 #}
 
 # Calculate the limit of f(x) when x tends to 0
@@ -57,17 +56,17 @@ return(lim)
 
 devplot <- function(f,x0)
 
-  {
+{
 
-#tracing the curve and its tangent
+  #tracing the curve and its tangent
 
-curve(f,from = -10,to= 10,col="blue" , xlab = "abscises ",ylab = "ordinates"
-      ,main= "curve of the function and its tangent")
+  curve(f,from = -10,to= 10,col="blue" , xlab = "abscises ",ylab = "ordinates"
+        ,main= "curve of the function and its tangent")
 
-pente <- limit(f,x0)
+  pente <- limit(f,x0)
 
 
-abline(a= f(x0)-pente*x0, b=pente,col= "red" )
+  abline(a= f(x0)-pente*x0, b=pente,col= "red" )
 
 }
 
@@ -77,24 +76,24 @@ abline(a= f(x0)-pente*x0, b=pente,col= "red" )
 
 #f <- function(x){exp(x)-x}
 #devplot(f,2)
-#on obtient le graphe de la fonction et sa tangente
+#we obtain the graph of the function and its tangent
 
 
 #calculating rounding and truncation error
 
 #1- rounding error
 
- Ear <- function(f,x0,h=10^-9,delta=10^-12){
+Ear <- function(f,x0,h=10^-9,delta=10^-12){
 
-   rap <- function(x){
+  rap <- function(x){
     2*delta*abs(f(x)/h)
-   }
+  }
 
-   return(rap(x0))
- }
+  return(rap(x0))
+}
 
- #x0 represents the point at which x tends
- #the relative precision of the machine
+#x0 represents the point at which x tends
+#the relative precision of the machine
 
 
 #2-truncation error
